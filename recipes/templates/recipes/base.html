@@ -7,7 +7,7 @@
     {% if title %}
     <title>Django Recipes - {{title}}</title>
     {% else %}
-    <title>Django Recipes</title>
+    <title>Culinarians Django APP</title>
     {% endif %}
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
@@ -17,9 +17,9 @@
     />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
       <div class="container">
-        <a class="navbar-brand" href="{% url 'recipes-home' %}">Recipes App</a>
+        <a class="navbar-brand" href="{% url 'recipes-home' %}">Culinarians</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -41,14 +41,18 @@
                 >Recipes</a
               >
             </li>
-            <li class="nav-item">
+            {% comment %} <li class="nav-item">
               <a class="nav-link" href="{% url 'recipes-create' %}">About</a>
-            </li>
+            </li> {% endcomment %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'recipes-create' %}">Add Recipe</a>
             </li>
           </ul>
         </div>
+        <form class="navbar-nav d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-primary" type="submit">Search</button>
+        </form>
         <div class="navbar-nav">
           {% if user.is_authenticated %}
           <a class="nav-item nav-link" href="{% url 'user-profile' %}"
@@ -67,10 +71,10 @@
 
     <div class="container">
 
-      <div class="row g-4">
+      <div class="row g-2">
 
         <div class="col-lg-3">
-          <h2>User Data:</h2>
+          <h4>User Data:</h4>
         </div>
 
         <div class="col-md-8 col-lg-6 vstack gap-2">
@@ -80,7 +84,7 @@
         </div>
 
         <div class="col-lg-3">
-          <h2>Recommended Content:</h2>
+          <h4>Recommended Content:</h4>
         </div>
 
       </div>

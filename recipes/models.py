@@ -9,7 +9,7 @@ class Recipe(models.Model):
   
   description = models.TextField(blank=True)
   
-  recipe_image = models.FileField(default=' ', upload_to='recipe_photoes', blank=True)
+  recipe_image = models.FileField(upload_to='recipe_photoes', blank=True)
   
   ingredients = models.TextField(default=' ', blank=False)
   

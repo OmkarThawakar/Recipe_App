@@ -32,7 +32,7 @@ class RecipeCreateView(LoginRequiredMixin, CreateView):
 
 class RecipeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
   model = models.Recipe
-  fields = ['title', 'description']
+  fields = ['title', 'description', 'recipe_image', 'ingredients', 'instructions', 'time', 'yields', 'nutritions']
 
   def test_func(self):
     recipe = self.get_object()

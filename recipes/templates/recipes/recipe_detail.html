@@ -2,17 +2,60 @@
 {% extends "recipes/base.html" %}
 <!-- -->
 {% block content %}
-<h1>Recipe # {{object.id}}</h1>
-<div class="card my-4">
-  <div class="card-body">
-    <h5 class="card-title">{{ object.title }}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">{{ object.author }}</h6>
-    <p class="card-text">{{ object.description }}</p>
-    <h6 class="card-subtitle mb-2 text-muted">
-      {{ object.updated_at|date:"F d, Y" }}
-    </h6>
+<h2>Recipe # {{object.id}}</h2>
+
+
+<div class="container text-center">
+  <div class="row justify-content-md-center">
+
+    <div class="card my-4">
+      <div class="card-body">
+        <img src="{{ recipe.recipe_image.url }}" class="card-img" alt="Recipe Image $$$">
+        <h5 class="card-title">{{ object.title }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">By : {{ object.author }}</h6>
+        {% comment %} <p class="card-text">{{ object.description }}</p>
+        <h6 class="card-subtitle mb-2 text-muted">
+          {{ object.updated_at|date:"F d, Y" }}
+        </h6> {% endcomment %}
+        {{ object.ingredients }}
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h5 class="card-subtitle">Ingredients</h5>
+          <p class="text-break">{{ object.ingredients }}</p>
+        </div>
+        <div class="col-md-auto">
+          <h5 class="card-subtitle">Instructions</h5>
+          <p class="text-break">{{ object.instructions }}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h5 class="card-subtitle">Time</h5>
+          <p>{{ object.time }}</p>
+        </div>
+        <div class="col">
+          <h5 class="card-subtitle">Servings/Yields</h5>
+          <p>{{ object.yields }}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h5 class="card-subtitle">Nutritional Information</h5>
+          <p>{{ object.nutritions }}</p>
+        </div>
+
+      </div>
+
+
+    </div>
+
   </div>
 </div>
+
 {% if object.author == user or user.is_staff %}
 <div class="col-4">
     <a class="btn btn-outline-info" href="{% url 'recipes-update' object.id %}">Update</a>
